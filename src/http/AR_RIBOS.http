@@ -1,0 +1,35 @@
+###
+# Obtener todos los registros de AR_RIBOS
+GET http://localhost:8080/ar_ribos
+Content-Type: application/json
+
+###
+
+# Crear un nuevo registro en AR_RIBOS
+POST http://localhost:8080/ar_ribos
+Content-Type: application/json
+
+{
+  "fecRegi": "2024-01-01",
+  "nomFunci": "Juan Pérez",
+  "nombRegi": "Centro",
+  "nombClie": "Empresa X",
+  "sede": "Bogotá",
+  "nomPuesTrab": "Analista",
+  "turno": "Noche",
+  "novePues": "Sin novedades",
+  "obsErva": "Observación adicional"
+}
+
+
+###
+
+# Obtener un registro específico de AR_RIBOS por ID
+GET http://localhost:8080/ar_ribos/{{id}}
+Content-Type: application/json
+
+###
+
+# Eliminar un registro de AR_RIBOS por ID
+DELETE http://localhost:8080/ar_ribos/{{id}}
+Content-Type: application/json
