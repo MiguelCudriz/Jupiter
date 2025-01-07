@@ -2,11 +2,14 @@ package com.honorlaurel.jupiter.AR_RIBOS;
 
 import com.honorlaurel.jupiter.service.AR_RIBOSService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import com.honorlaurel.jupiter.AR_RIBOS.AR_RIBOSRepository;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
 @RestController
@@ -50,4 +53,18 @@ public class AR_RIBOSController {
     public void eliminarAR_RIBOS(@PathVariable Long id) {
         arRibosService.deleteAR_RIBOS(id);
     }
+
+    @Configuration
+    public class WebConfig implements WebMvcConfigurer {
+
+        @Override
+        public void addCorsMappings(CorsRegistry registry) {
+            registry.addMapping("/**")
+                    .allowedOrigins("http://localhost:5173") // La URL de tu frontend
+                    .allowedMethods("GET", "POST", "PUT", "DELETE")
+                    .allowedHeaders("*")
+                    .allowCredentials(true);
+        }
+    }
+
 }
